@@ -122,8 +122,9 @@ export function Basecamps() {
           </div>
           <Reveal i={2}>
             <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
-              One villa per stop, whole group under one roof, cost split ten ways. Villa rates below are
-              nightly for the entire house — divide by ten for your share.
+              Each stop lists a modest private villa and two hotel options at real Agoda/Booking June
+              rates — best value first, per-head share already worked out. Ten people is five rooms or
+              one villa, whichever the group votes for.
             </p>
           </Reveal>
         </div>

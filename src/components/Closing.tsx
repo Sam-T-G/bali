@@ -30,9 +30,9 @@ export function Closing() {
 
         <Reveal i={2}>
           <p className="mx-auto mt-8 max-w-xl text-pretty text-base leading-relaxed text-bone-dim">
-            Villas for ten in June book out roughly eight months ahead, and Singapore Airlines group fares
-            get materially worse after the new year. If this is happening, it needs to be locked by{' '}
-            <span className="text-bone">{DEPOSIT.by}</span>.
+            The beds are mostly free-cancellation, so they carry no risk. Flights are the deadline: June
+            fares are at their best 6–9 months out and only climb. If this is happening, seats get booked
+            by <span className="text-bone">{DEPOSIT.by}</span>.
           </p>
         </Reveal>
 

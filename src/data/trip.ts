@@ -17,11 +17,11 @@ export const TRIP = {
 } as const;
 
 export const ALT_DATES = {
-  label: 'Prefer the 21st?',
+  label: 'Cheaper window',
   body:
-    'Shift everything +2 days: depart LAX Mon Jun 21, land Bali Wed Jun 23, fly home Thu Jul 1. ' +
-    'Same 8 nights, same itinerary, same budget — but it costs two extra weekdays of PTO, because ' +
-    'the Jun 19 version leans on a Saturday departure.',
+    'Depart Mon Jun 21 instead: Monday fares consistently price under weekend ones on this route, and ' +
+    'landing home Tue Jun 29 or Wed Jun 30 keeps the trip to 6–7 island nights — roughly $80–170 less ' +
+    'per person all-in and one less PTO day. The vote between windows is on the table below the budget.',
 } as const;
 
 /* ─────────────────────────────  THE PITCH  ───────────────────────────── */
@@ -35,6 +35,9 @@ export const PITCH = {
     'and a sunset scene that runs until it does not.',
     'So we do all three. Three nights on the cliffs, three in the jungle, two on the coast — each basecamp a ' +
     'single villa the whole group shares, each move under two hours in a van.',
+    'Priced against what these places actually list for on Agoda and Booking — not what travel blogs ' +
+    'showcase. The real Bali market puts ten friends in private pool villas and beachfront hotels for ' +
+    'about $27 a person a night, and the whole trip clears at roughly the cost of the flight plus $800.',
     'The part that actually matters: nobody has to do anything. Every day has one anchor — a dinner, a sunset, ' +
     'one thing we do together — and everything either side of it is opt-in. Sunrise volcano at 2am and a spa ' +
     'day are the same day. Show up for the anchor, do what you want with the rest.',
@@ -45,7 +48,7 @@ export const STATS = [
   { value: '9', label: 'days on the island', sub: 'Jun 21 – 29' },
   { value: '3', label: 'basecamps', sub: 'Uluwatu · Ubud · Canggu' },
   { value: '10', label: 'of us', sub: 'private villas, split evenly' },
-  { value: '$3.3k', label: 'all-in, per person', sub: 'flights, villas, food, the lot' },
+  { value: '$2.2k', label: 'all-in, per person', sub: 'flights, beds, food, the lot' },
 ] as const;
 
 /* ─────────────────────────────  FLIGHTS  ───────────────────────────── */
@@ -119,32 +122,32 @@ export type FareTier = {
 export const FARES: FareTier[] = [
   {
     id: 'economy',
-    name: 'Economy',
-    price: 1595,
-    range: '$1,350 – $1,850',
-    perks: ['2 × 23kg checked', 'Seat selection at booking', 'The 17h50m is survivable — it is a very good economy cabin'],
-    recommended: true,
+    name: 'Saver · EVA / China Airlines',
+    price: 1150,
+    range: '$1,000 – $1,300',
+    perks: ['One stop via Taipei or Seoul, ~20–22h', '2 × 23kg checked on both carriers', 'Airline-direct fares published at $1,094–1,098 — the book-early win'],
   },
   {
     id: 'premium',
-    name: 'Premium Economy',
-    price: 2950,
-    range: '$2,700 – $3,300',
-    perks: ['38" pitch, 8" recline', 'Book the Cook meal ordering', 'Priority boarding + 2 × 23kg', 'Worth it on the LAX–SIN leg specifically'],
+    name: 'Singapore Airlines',
+    price: 1350,
+    range: '$1,150 – $1,550',
+    perks: ['Nonstop LAX–SIN, then 2h40m to Bali', 'Matches the published June all-airline average for the route', 'Best long-haul economy in the sky, bags checked through'],
+    recommended: true,
   },
   {
     id: 'business',
-    name: 'Business',
-    price: 6400,
-    range: '$5,900 – $7,200',
-    perks: ['Lie-flat, direct aisle access', 'SilverKris lounge at Changi', 'You will arrive genuinely functional'],
+    name: 'SQ Premium Economy',
+    price: 2300,
+    range: '$1,850 – $2,600',
+    perks: ['38" pitch on the 17h50m leg — where it actually matters', 'Individual upgrade, never part of the group budget', 'Book the Cook meal ordering + priority boarding'],
   },
 ];
 
 export const FLIGHT_NOTES = [
-  'Fares are round-trip per person, LAX–DPS via Singapore, sampled ' + TRIP.pricedOn + ' for June 2027 departures.',
-  'June is Bali high season and SQ prices it that way. Booking 6–9 months out — i.e. Sept–Dec 2026 — is the sweet spot.',
-  'Ten seats on one booking is a group fare. Call SQ Group Sales rather than booking ten times on the website: it usually holds the price and lets us deposit now and pay the balance later.',
+  'Fares are round-trip per person for June 2027, anchored to published airline-direct fares and route averages, sampled ' + TRIP.pricedOn + '.',
+  'Book Sep–Dec 2026 (6–9 months out). Split the ten of us into 2–3 separate bookings on the same itinerary rather than one group booking — group desks price above the lowest fare bucket.',
+  'Monday departures consistently price below weekend ones on this route. Anything near $1,100 on a quality one-stop is a book-it-now number.',
 ];
 
 /* ─────────────────────────────  BASECAMPS  ───────────────────────────── */
@@ -185,22 +188,22 @@ export const BASECAMPS: Basecamp[] = [
     vibe: ['Cliffs + reef breaks', 'Sunset bars', 'Slowest mornings of the trip'],
     stays: [
       {
-        name: 'Villa Bayu',
-        bedrooms: '6 BR',
-        rate: '≈ $850 – 1,100 / night',
-        detail: 'Modern estate in the hills above Uluwatu. Two pools, big communal living, comfortably absorbs ten.',
+        name: 'Villa Anak · Ungasan',
+        bedrooms: '5 BR villa',
+        rate: '$280 – 340 / night whole villa',
+        detail: 'Real, bookable 5-bed/5-bath private-pool villa on Booking.com — whole-house privacy for ten at $30 a head a night. The best rebuttal to the $1,000-a-night villa myth.',
       },
       {
-        name: 'Summer Ulu',
-        bedrooms: '5–6 BR',
-        rate: '≈ $900 – 1,200 / night',
-        detail: 'Design-forward, sleeps twelve. The one to book if the group cares what the photos look like.',
+        name: 'Swiss-Belresort Pecatu',
+        bedrooms: '5 rooms',
+        rate: '$45 – 60 / room / night',
+        detail: 'Chain 4-star with a big pool on the Bukit, VAT included. The whole group sleeps well for ~$260 a night total — about $26 a head.',
       },
       {
-        name: 'Villa Anugrah',
-        bedrooms: '5 suites',
-        rate: '≈ $1,100 – 1,500 / night',
-        detail: 'Clifftop estate on the south-western tip, set back ~45m from the drop. The splurge option.',
+        name: 'Padang-Padang Inn',
+        bedrooms: '5 rooms',
+        rate: '$35 – 50 / room / night',
+        detail: 'Rated-8.2 pool inn a few minutes on foot from Padang Padang beach. The lean option at ~$21 a head.',
       },
     ],
     transferIn: 'DPS → Uluwatu · 45–60 min · two vans',
@@ -219,22 +222,22 @@ export const BASECAMPS: Basecamp[] = [
     vibe: ['Rice terrace + gorge', 'Volcano at sunrise', 'Best food on the island'],
     stays: [
       {
-        name: 'Villa Omah Padi',
-        bedrooms: '5 BR',
-        rate: '$495 – 595 / night',
-        detail: 'Lagoon pool, rice-paddy views, tropical build. The best value-per-photo on this list.',
+        name: 'Dupa Ubud Villa',
+        bedrooms: '5 pool-villa units',
+        rate: '$38 – 48 / unit / night in June',
+        detail: 'The arbitrage of the trip: every couple gets its own standalone private-pool villa for guesthouse money — the exact product agencies resell at $700+ a night. ~$24 a head.',
       },
       {
-        name: 'Amala Villas',
-        bedrooms: '5 BR',
-        rate: '≈ $600 – 850 / night',
-        detail: 'Surrounded by working paddy in a traditional village, 15 minutes from central Ubud.',
+        name: 'Bhuwana Ubud Hotel',
+        bedrooms: '5 rooms',
+        rate: '$35 – 55 / room / night, breakfast incl.',
+        detail: 'Rice-field pool hotel with its own farm just outside the centre, backed by actual-paid rates of $26–37 a room. Bulletproof value at ~$23 a head.',
       },
       {
-        name: 'Villa Kanti Ubud',
-        bedrooms: '5 BR',
-        rate: '≈ $550 – 750 / night',
-        detail: 'Tropical gardens bordered by rice terraces, ~15 min drive from the centre.',
+        name: 'Element by Westin Bali Ubud',
+        bedrooms: '5 rooms',
+        rate: '$90 – 130 / room / night',
+        detail: 'The one branded jungle-resort splurge, with verified $82 lows if we book the cheap bucket early. ~$55 a head and reads as a flex, not a shock.',
       },
     ],
     transferIn: 'Uluwatu → Ubud · ~2h · stop at Tegenungan Waterfall en route',
@@ -253,18 +256,22 @@ export const BASECAMPS: Basecamp[] = [
     vibe: ['Beach clubs', 'Learn-to-surf break', 'Last-night energy'],
     stays: [
       {
-        name: 'La Bohème Mansion',
-        bedrooms: '8 BR',
-        rate: '$1,430 – 1,596 / night',
-        detail:
-          '25m lap pool, gym, cinema room, wine cellar, ten staff. Five minutes from Pererenan beach. ' +
-          'Split ten ways this is the single best night of the trip.',
+        name: 'FRii Bali Echo Beach',
+        bedrooms: '5 rooms',
+        rate: '$46 – 66 / room / night',
+        detail: 'Pool hotel literally on Echo Beach with verified $37–46 baselines — the best location-per-dollar of the whole trip. ~$28 a head.',
       },
       {
-        name: 'Villa Damar',
-        bedrooms: '4 BR',
-        rate: '≈ $400 – 550 / night',
-        detail: 'Walking distance to Finns and Atlas. The lean option if we want to bank the money for elsewhere.',
+        name: 'Aston Canggu Beach Resort',
+        bedrooms: '5 rooms',
+        rate: '$56 – 80 / room / night, breakfast incl.',
+        detail: 'Rooftop pool, short walk to Batu Bolong. $47–52 baselines from two independent aggregators; ~$34 a head in June.',
+      },
+      {
+        name: 'Two adjacent 3BR pool villas',
+        bedrooms: '2 × 3 BR',
+        rate: '$155 – 250 / villa / night, tax incl.',
+        detail: 'Agoda has deep 3BR inventory at IDR 2.5–4M a night — two units beat one big villa on price and cancellation flexibility for a two-night stop. ~$40 a head.',
       },
     ],
     transferIn: 'Ubud → Canggu · ~1h 30m · stop at Tirta Empul en route',
@@ -324,7 +331,7 @@ export const DAYS: Day[] = [
       time: '18:30',
       title: 'First night at the villa',
       body:
-        'Private chef dinner on the terrace — around $18 a head including groceries, which is the standard way ' +
+        'Villa cook dinner on the terrace — $10–14 a head including the grocery run, which is the standard way ' +
         'villa kitchens work here. Nobody is going anywhere on day one and nobody should.',
     },
     tracks: [
@@ -342,7 +349,7 @@ export const DAYS: Day[] = [
         title: 'Pool, and nothing else',
         time: 'All afternoon',
         body:
-          'You have been travelling for roughly 26 hours. The villa has two pools. This is a completely legitimate ' +
+          'You have been travelling for roughly 26 hours. The villa has a pool. This is a completely legitimate ' +
           'use of day one and no one will give you grief for it.',
         cost: 'Free',
       },
@@ -371,8 +378,8 @@ export const DAYS: Day[] = [
         time: '06:00 – 09:00',
         body:
           'Down the staircase, through the gap in the rock, and into one of the best waves on the Bukit. Board hire ' +
-          'about $7 a day; an instructor for the never-evers runs $35–45 for two hours.',
-        cost: '$7 – 45',
+          'about $7 a day; an instructor for the never-evers runs $25–35 for two hours.',
+        cost: '$7 – 35',
       },
       {
         kind: 'cruise',
@@ -409,14 +416,14 @@ export const DAYS: Day[] = [
           'An hour to Sanur, forty minutes on a fast boat, then Kelingking Beach — the T-Rex headland you have ' +
           'seen a thousand times — plus Angel’s Billabong, Broken Beach and a snorkel stop. Long day, genuinely ' +
           'spectacular, and the single most photographed thing we will do.',
-        cost: '$54 – 95',
+        cost: '$45 – 65',
       },
       {
         kind: 'cruise',
         title: 'Spa, then Thomas Beach',
         time: 'Whenever',
         body:
-          'Two-hour Balinese massage for about $30 — a quarter of what it costs at home, and better. Then the ' +
+          'A long Balinese massage for $10–15 at a neighbourhood spa — a fraction of home prices, and better. Then the ' +
           'staircase down to Thomas Beach, which is the quiet one the tour buses never find.',
         cost: '$30',
       },
@@ -517,7 +524,7 @@ export const DAYS: Day[] = [
           'Pickup at 2am, two hours up a 1,717m active volcano in the dark, and sunrise from the crater rim over ' +
           'Lake Batur with breakfast eggs cooked in a steam vent. Not technical, but it is a real hike and you ' +
           'will need the head torch and a layer.',
-        cost: '$50 – 75',
+        cost: '$30 – 45',
       },
       {
         kind: 'cruise',
@@ -586,7 +593,7 @@ export const DAYS: Day[] = [
         time: '07:00 – 17:00',
         body:
           'Batu Bolong is a slow, forgiving beach break and the best place on the island to stand up for the first ' +
-          'time — two-hour lesson with a board about $35. Then Finns or Atlas for the afternoon.',
+          'time — two-hour lesson with a board about $25–30. Then Finns or Atlas for the afternoon.',
         cost: '$35 – 90',
       },
       {
@@ -595,7 +602,7 @@ export const DAYS: Day[] = [
         time: 'Whenever',
         body:
           'Canggu’s café strip is absurd, the Love Anchor market is where the souvenirs actually get bought, and ' +
-          'a 90-minute massage is $20. A perfectly good way to spend a last day.',
+          'a 90-minute massage is $12–18. A perfectly good way to spend a last day.',
         cost: '$30 – 60',
       },
     ],
@@ -631,21 +638,21 @@ export type MenuItem = {
 };
 
 export const MENU: MenuItem[] = [
-  { name: 'Nusa Penida day trip', where: 'Ex-Sanur', price: '$54 – 95', usd: 75, intensity: 'full send', note: 'Fast boat, Kelingking, Broken Beach, snorkel. 12 hours door to door.' },
-  { name: 'Mount Batur sunrise trek', where: 'Kintamani', price: '$50 – 75', usd: 62, intensity: 'full send', note: '2am pickup, 1,717m, breakfast on the crater rim.' },
+  { name: 'Nusa Penida day trip', where: 'Ex-Sanur', price: '$45 – 65', usd: 55, intensity: 'full send', note: 'Fast boat, Kelingking, Broken Beach, snorkel. 12 hours door to door, group-tour rate.' },
+  { name: 'Mount Batur sunrise trek', where: 'Kintamani', price: '$30 – 45', usd: 38, intensity: 'full send', note: '2am pickup, 1,717m, breakfast on the crater rim. Book on Klook/GetYourGuide, not the hotel desk.' },
   { name: 'Ayung River rafting', where: 'Ubud', price: '$40 – 50', usd: 45, intensity: 'moderate', note: 'Class II–III, 12km, jungle gorge, lunch included.' },
   { name: 'ATV through the paddies', where: 'Ubud', price: 'from $50', usd: 55, intensity: 'moderate', note: 'Guide, gear and insurance included. Extremely muddy.' },
-  { name: 'Surf lesson + board', where: 'Batu Bolong / Padang', price: '$35 – 45', usd: 40, intensity: 'moderate', note: 'Two hours, instructor, soft-top. Beginners genuinely stand up.' },
+  { name: 'Surf lesson + board', where: 'Batu Bolong / Padang', price: '$25 – 35', usd: 30, intensity: 'moderate', note: 'Two hours, instructor, soft-top. Beginners genuinely stand up.' },
   { name: 'Kecak fire dance', where: 'Uluwatu Temple', price: '$9 + $3 entry', usd: 12, intensity: 'easy', note: 'IDR 150,000. Sunset show, book the ocean-side seats.' },
   { name: 'Sacred Monkey Forest', where: 'Ubud', price: '$5 – 6', usd: 6, intensity: 'easy', note: 'IDR 80k weekday / 100k weekend. Do not make eye contact.' },
   { name: 'Tirta Empul purification', where: 'Tampaksiring', price: '$5', usd: 5, intensity: 'easy', note: 'IDR 75,000. Sarong provided. Go at 08:00.' },
   { name: 'Tegenungan Waterfall', where: 'En route to Ubud', price: '$1.30', usd: 2, intensity: 'easy', note: 'IDR 20,000. Best 8–10am before the buses.' },
   { name: 'Tegalalang rice terraces', where: 'Ubud', price: '$1.50 + swings', usd: 15, intensity: 'easy', note: 'Entry is pennies; the jungle swing is $10–35 on top.' },
   { name: 'Campuhan Ridge Walk', where: 'Ubud', price: 'Free', usd: 0, intensity: 'easy', note: '1.7km ridgeline between two gorges. Dawn or dusk only.' },
-  { name: 'Balinese massage, 2h', where: 'Everywhere', price: '$20 – 30', usd: 25, intensity: 'easy', note: 'The single best value on the island. Do it more than once.' },
+  { name: 'Balinese massage, 1h', where: 'Local spas', price: '$8 – 15', usd: 12, intensity: 'easy', note: 'At neighbourhood spas, not hotel spas. The single best value on the island — do it more than once.' },
   { name: 'Cliffside day club', where: 'Ulu Cliffhouse / Savaya', price: '$15 – 60', usd: 40, intensity: 'easy', note: 'Entry ~IDR 250k, or split a daybed minimum spend.' },
   { name: 'Beach club daybed', where: 'Finns / Atlas / La Brisa', price: '$0 – 80', usd: 45, intensity: 'easy', note: 'La Brisa free before 4pm; Atlas daybeds come with F&B credit.' },
-  { name: 'Balinese cooking class', where: 'Ubud', price: '$35 – 50', usd: 42, intensity: 'easy', note: 'Market run at dawn, then you cook lunch. Better than it sounds.' },
+  { name: 'Balinese cooking class', where: 'Ubud', price: '$25 – 35', usd: 30, intensity: 'easy', note: 'Market run at dawn, then you cook lunch. Klook rate, better than it sounds.' },
   { name: 'Yoga Barn drop-in', where: 'Ubud', price: '$12', usd: 12, intensity: 'easy', note: 'Book the day before — the good classes fill.' },
   { name: 'Scooter hire, per day', where: 'Anywhere', price: '$6 – 8', usd: 7, intensity: 'moderate', note: 'You need an international licence with a motorcycle endorsement. Police do check.' },
 ];
@@ -664,63 +671,63 @@ export type BudgetLine = {
 export const BUDGET: BudgetLine[] = [
   {
     label: 'Flights',
-    detail: 'SQ round-trip LAX–DPS via Singapore',
-    lean: 1395,
-    comfort: 1595,
-    send: 2950,
+    detail: 'Round trip LAX–DPS · lean = EVA/China Airlines, comfort = Singapore Airlines, send = SQ Premium Economy',
+    lean: 1200,
+    comfort: 1350,
+    send: 2300,
   },
   {
-    label: 'Villas',
-    detail: '8 nights across three basecamps, ÷ 10, incl. 21% tax & service',
-    lean: 690,
-    comfort: 870,
-    send: 1180,
+    label: 'Beds',
+    detail: '8 nights ÷ 10 — private pool villa in Uluwatu, own-pool-villa-per-couple in Ubud, beachfront hotel in Canggu. June rates, tax in.',
+    lean: 145,
+    comfort: 220,
+    send: 390,
   },
   {
     label: 'Ground transport',
-    detail: 'Airport transfers, two inter-region moves, 4 days of van hire, ÷ 10',
-    lean: 75,
-    comfort: 95,
-    send: 130,
+    detail: 'One 10-seat HiAce + driver at the published operator rate (~$80/day incl. fuel), transfers, tips — all ÷ 10',
+    lean: 40,
+    comfort: 70,
+    send: 90,
   },
   {
     label: 'Food & drink',
-    detail: '9 days — warungs, villa chef nights, a few proper dinners',
-    lean: 315,
-    comfort: 450,
-    send: 720,
+    detail: '9 days — warungs at $2–3 a plate, cafés at $5–8, and 3–4 proper group dinners at $15–20 a head',
+    lean: 135,
+    comfort: 200,
+    send: 280,
   },
   {
     label: 'Activities',
-    detail: 'Off the menu below — pick your own number',
-    lean: 95,
-    comfort: 200,
-    send: 420,
+    detail: 'The full menu at Klook / gate prices, never hotel-desk prices: Penida, Batur, Kecak, massages, a surf lesson',
+    lean: 120,
+    comfort: 190,
+    send: 250,
   },
   {
     label: 'Entry & admin',
-    detail: 'Visa on arrival $35 · Bali tourist levy $10 · travel insurance',
-    lean: 85,
-    comfort: 105,
-    send: 145,
+    detail: 'e-VOA $31 · Bali levy $9 · insurance with scooter + trek cover · eSIM bought online, not at the airport counter',
+    lean: 75,
+    comfort: 125,
+    send: 150,
   },
 ];
 
 export const BUDGET_TIERS = [
-  { id: 'lean', name: 'Lean', blurb: 'Economy, warungs, the free stuff. Still an unbelievable trip.' },
-  { id: 'comfort', name: 'Comfort', blurb: 'What we are actually pitching. Economy, good villas, most of the menu.' },
-  { id: 'send', name: 'Full send', blurb: 'Premium Economy, the splurge villas, everything on the list.' },
+  { id: 'lean', name: 'Lean', blurb: 'EVA/China Airlines booked early, guesthouse track, mostly warungs. Still pool inns, not hostels.' },
+  { id: 'comfort', name: 'Comfort', blurb: 'The actual pitch. SQ economy, private pool villas and beachfront hotels, the full activity menu.' },
+  { id: 'send', name: 'Full send', blurb: 'Premium Economy on the long leg, the Westin in Ubud, 4-star everywhere, every activity.' },
 ] as const;
 
 export type BudgetTier = (typeof BUDGET_TIERS)[number]['id'];
 
 export const DEPOSIT = {
-  amount: 400,
+  amount: 300,
   by: 'Nov 1, 2026',
-  covers: 'Villa deposits + the SQ group-fare hold.',
+  covers: 'Your share of the flight bookings — the one thing that genuinely gets worse with time.',
   note:
-    'Non-refundable once villas are booked, so only put it in if you are actually coming. ' +
-    'Balance is due 60 days out, around late April 2027.',
+    'Most of the rooms and villas above are free-cancellation on Agoda/Booking, so beds carry almost no ' +
+    'commitment risk. Flights are the deadline: fares are at their best Sep–Dec 2026 and only climb from there.',
 };
 
 /* ─────────────────────────────  LOGISTICS  ───────────────────────────── */
@@ -760,7 +767,7 @@ export const KNOW = [
     title: 'Getting around',
     body:
       'Grab and Gojek work in Canggu and Ubud but are blocked in parts of Uluwatu by local driver associations. ' +
-      'Private van with driver is $45–60 a day all in — split ten ways it is nothing, and it is how we move.',
+      'A 10-seat van with driver runs ~$80 for a full 11-hour day at published operator rates, fuel included — $8 a head, and it is how we move. Book operators directly, never through hotel desks (1.5–2× markup).',
   },
   {
     title: 'Health',
@@ -781,16 +788,15 @@ export const KNOW = [
 export const SOURCES = [
   { label: 'Singapore Airlines SQ37 / SQ38 schedules', url: 'https://info.flightmapper.net/flight/Singapore_Airlines_SQ_37' },
   { label: 'SIN–DPS schedule (SQ938 / 944 / 946)', url: 'https://info.flightmapper.net/route/Singapore_Airlines_SQ_SIN_DPS' },
-  { label: 'Uluwatu villas for groups', url: 'https://thehoneycombers.com/bali/best-villas-in-uluwatu/' },
-  { label: 'Ubud luxury villa rates 2026', url: 'https://travjoy.com/blog/bali-best-luxury-villas-in-ubud-jungle-retreats-for-2026' },
-  { label: 'La Bohème Mansion, Pererenan', url: 'https://thetropicaldoor.com/villas/villa-la-boheme-mansion' },
-  { label: 'Bali private driver cost 2026', url: 'https://balinusatransport.id/blog/private-driver-bali-guide.html' },
-  { label: 'Mount Batur sunrise trek pricing', url: 'https://baliventur.com/mount-batur-sunrise-trekking-price/' },
-  { label: 'Nusa Penida day trip pricing', url: 'https://nusapenida.org/nusa-penida-west-tour/' },
-  { label: 'Monkey Forest entrance fee', url: 'https://www.baliholidaysecrets.com/ubud-monkey-forest/' },
-  { label: 'Tirta Empul entrance fee', url: 'https://www.ubudcenter.com/tirta-empul-temple/' },
+  { label: 'LAX–DPS fare tracking (June averages)', url: 'https://www.kayak.com/flight-routes/Los-Angeles-LAX/Denpasar-Bali-DPS' },
+  { label: 'EVA / China Airlines one-stop fares', url: 'https://www.china-airlines.com/en-us/flights-from-los-angeles-to-bali-denpasar' },
+  { label: 'Uluwatu hotel & villa listing rates', url: 'https://www.agoda.com/city/uluwatu-id.html' },
+  { label: 'Ubud hotel & villa listing rates', url: 'https://www.agoda.com/city/ubud-id.html' },
+  { label: 'Canggu hotel listing rates', url: 'https://www.agoda.com/city/canggu-id.html' },
+  { label: 'Activity pricing at gate/local rates', url: 'https://www.klook.com/coureg/108-bali-things-to-do/' },
+  { label: 'Bali private van + driver published rates', url: 'https://balinusatransport.id/blog/private-driver-bali-guide.html' },
+  { label: 'Mount Batur trek local pricing', url: 'https://baliventur.com/mount-batur-sunrise-trekking-price/' },
+  { label: 'Nusa Penida group-tour pricing', url: 'https://nusapenida.org/nusa-penida-west-tour/' },
   { label: 'Bali tourist levy & entry requirements', url: 'https://shortstaybali.com/bali-tourist-levy-entry-requirements-2026-guide/' },
-  { label: 'Bali food costs 2026', url: 'https://unfoldbali.com/cost-of-food-in-bali/' },
-  { label: 'Uluwatu things to do & beach clubs', url: 'https://www.kelanabykayla.com/best-things-to-do-in-uluwatu/' },
-  { label: 'Canggu beach club pricing', url: 'https://www.evarahcollection.com/post/best-beach-clubs-in-canggu-2026-an-honest-local-ranking' },
+  { label: 'Bali food costs by eating style', url: 'https://unfoldbali.com/cost-of-food-in-bali/' },
 ];

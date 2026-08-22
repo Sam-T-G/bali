@@ -10,7 +10,7 @@ export function Footer() {
               Bali <span className="font-sans text-xs tracking-[0.2em] text-ember align-super">2027</span>
             </p>
             <p className="mt-4 max-w-xs text-xs leading-relaxed text-bone-faint">
-              Researched in {TRIP.pricedOn} for June 2027 travel. Prices are estimates in US dollars, not
+              Priced from Agoda, Booking.com, Kayak and Klook listing rates in {TRIP.pricedOn} for June 2027 travel — deliberately the conservative end of the market, not the showcase tier. Estimates in US dollars, not
               quotes — flight fares and villa rates move, and the rupiah moves with them. Verify before
               anyone sends money.
             </p>

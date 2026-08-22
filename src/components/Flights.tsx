@@ -65,8 +65,8 @@ export function Flights() {
           </div>
           <Reveal i={2}>
             <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
-              Singapore Airlines the whole way, so bags check through and a delay on the long leg is
-              their problem to solve, not ours.
+              The times below are the Singapore Airlines routing — the comfort pick. A quality one-stop
+              on EVA or China Airlines runs ~$200 less; the cabin switcher has all three tiers.
             </p>
           </Reveal>
         </div>
