@@ -85,17 +85,38 @@ function Camp({ camp, index }: { camp: Basecamp; index: number }) {
               <p className="label mb-4">Where we&rsquo;d stay</p>
               <ul className="space-y-px overflow-hidden rounded-xl bg-line-soft">
                 {camp.stays.map((stay) => (
-                  <li key={stay.name} className="bg-ink px-5 py-4 transition-colors duration-300 hover:bg-ink-2">
-                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                      <p className="text-sm font-medium text-bone">
-                        {stay.name}
-                        <span className="ml-2.5 font-normal text-bone-faint">{stay.bedrooms}</span>
-                      </p>
-                      <p className="font-mono text-xs" style={{ color: camp.accent }}>
-                        {stay.rate}
-                      </p>
+                  <li key={stay.name} className="bg-ink transition-colors duration-300 hover:bg-ink-2">
+                    <div className="flex gap-4 px-5 py-4">
+                      {stay.image && (
+                        <Photo
+                          img={stay.image}
+                          className="mt-0.5 h-16 w-20 shrink-0 rounded-lg"
+                          sizes="80px"
+                        />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                          <p className="text-sm font-medium text-bone">
+                            {stay.name}
+                            <span className="ml-2.5 font-normal text-bone-faint">{stay.bedrooms}</span>
+                          </p>
+                          <p className="font-mono text-xs" style={{ color: camp.accent }}>
+                            {stay.rate}
+                          </p>
+                        </div>
+                        <p className="mt-1.5 text-xs leading-relaxed text-bone-faint">{stay.detail}</p>
+                        {stay.link && (
+                          <a
+                            href={stay.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-2 inline-flex items-center gap-1 text-[0.7rem] text-bone-dim underline decoration-line underline-offset-4 transition-colors hover:text-bone"
+                          >
+                            Real photos &amp; live rates <span aria-hidden className="text-[0.6em]">↗</span>
+                          </a>
+                        )}
+                      </div>
                     </div>
-                    <p className="mt-1.5 text-xs leading-relaxed text-bone-faint">{stay.detail}</p>
                   </li>
                 ))}
               </ul>
@@ -123,8 +144,8 @@ export function Basecamps() {
           <Reveal i={2}>
             <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
               Each stop lists a modest private villa and two hotel options at real Agoda/Booking June
-              rates — best value first, per-head share already worked out. Ten people is five rooms or
-              one villa, whichever the group votes for.
+              rates — best value first, per-head share already worked out. Thumbnails are photos of the
+              area, not the property: the real photos live behind each listing link.
             </p>
           </Reveal>
         </div>

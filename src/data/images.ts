@@ -24,6 +24,22 @@ export type Img = {
 const u = (id: string, w = 1600) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
+/**
+ * Build an <img> src from an Unsplash photo PAGE url (unsplash.com/photos/<slug>).
+ * The /download endpoint 302s to the CDN file with sizing params — the supported
+ * way to hotlink a specific photo when you found its page, not its CDN id.
+ */
+export const fromPage = (pageUrl: string, w = 1600) =>
+  `${pageUrl.replace(/\/+$/, '')}/download?force=true&w=${w}`;
+
+/** An Img built from a search-verified photo page; gradient still covers failure. */
+export const pageImg = (pageUrl: string, alt: string, fallback: [string, string]): Img => ({
+  src: fromPage(pageUrl),
+  alt,
+  fallback,
+  credit: 'Unsplash',
+});
+
 export const IMAGES = {
   hero: {
     src: u('photo-1537996194471-e657df975ab4', 2000),

@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion, AnimatePresence, LayoutGroup } from 'motion/react';
 import { Reveal } from './Reveal';
-import { MENU, type MenuItem } from '@/data/trip';
+import { Photo } from './Photo';
+import { MENU, MENU_CATEGORIES, type MenuItem } from '@/data/menu';
 
-const FILTERS = ['everything', 'easy', 'moderate', 'full send'] as const;
-type Filter = (typeof FILTERS)[number];
+const INTENSITIES = ['easy', 'moderate', 'full send'] as const;
 
 const DOT: Record<MenuItem['intensity'], string> = {
   easy: 'bg-jade',
@@ -15,8 +15,16 @@ const DOT: Record<MenuItem['intensity'], string> = {
 };
 
 export function Menu() {
-  const [filter, setFilter] = useState<Filter>('everything');
-  const shown = filter === 'everything' ? MENU : MENU.filter((m) => m.intensity === filter);
+  const [cat, setCat] = useState<string>('all');
+  const [level, setLevel] = useState<string>('all');
+
+  const shown = useMemo(
+    () =>
+      MENU.filter(
+        (m) => (cat === 'all' || m.category === cat) && (level === 'all' || m.intensity === level),
+      ),
+    [cat, level],
+  );
 
   return (
     <section id="menu" className="relative scroll-mt-16 border-t border-line-soft py-24 sm:py-32">
@@ -26,84 +34,111 @@ export function Menu() {
             <Reveal><p className="label mb-6">À la carte</p></Reveal>
             <Reveal i={1}>
               <h2 className="text-balance font-display text-[clamp(2.25rem,5.5vw,4rem)]">
-                The menu. Take what you want, skip what you don&rsquo;t.
+                The menu. {MENU.length} things worth doing — pick yours.
               </h2>
             </Reveal>
           </div>
           <Reveal i={2}>
             <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
-              Nothing here is booked as a group unless enough people want it. Prices are per person and
-              already include the bits that catch people out.
+              Nothing is pre-booked for the group. Prices are per person at local-booking rates —
+              Klook, GetYourGuide or the gate, never the hotel desk.
             </p>
           </Reveal>
         </div>
 
+        {/* Category rail */}
         <Reveal i={1}>
-          <div className="mt-12 flex flex-wrap gap-2">
-            <LayoutGroup id="menu-filter">
-              {FILTERS.map((f) => (
+          <div className="no-bar mt-12 flex gap-2 overflow-x-auto pb-1">
+            <LayoutGroup id="menu-cat">
+              {[{ id: 'all', label: 'Everything' }, ...MENU_CATEGORIES].map((c) => (
                 <button
-                  key={f}
-                  onClick={() => setFilter(f)}
-                  aria-pressed={filter === f}
-                  className={`relative rounded-full border px-4 py-2 text-xs font-medium capitalize transition-colors ${
-                    filter === f ? 'border-transparent text-ink' : 'border-line text-bone-faint hover:text-bone-dim'
+                  key={c.id}
+                  onClick={() => setCat(c.id)}
+                  aria-pressed={cat === c.id}
+                  className={`relative shrink-0 rounded-full border px-4 py-2 text-xs font-medium transition-colors ${
+                    cat === c.id ? 'border-transparent text-ink' : 'border-line text-bone-faint hover:text-bone-dim'
                   }`}
                 >
-                  {filter === f && (
+                  {cat === c.id && (
                     <motion.span
-                      layoutId="menu-pill"
+                      layoutId="menu-cat-pill"
                       className="absolute inset-0 rounded-full bg-bone"
                       transition={{ type: 'spring', stiffness: 400, damping: 34 }}
                     />
                   )}
-                  <span className="relative">{f}</span>
+                  <span className="relative">{c.label}</span>
                 </button>
               ))}
             </LayoutGroup>
           </div>
         </Reveal>
 
-        <ul className="mt-8 overflow-hidden rounded-2xl border border-line-soft">
+        {/* Intensity filter */}
+        <Reveal i={2}>
+          <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+            <button
+              onClick={() => setLevel('all')}
+              className={`transition-colors ${level === 'all' ? 'text-bone' : 'text-bone-faint hover:text-bone-dim'}`}
+            >
+              any pace
+            </button>
+            {INTENSITIES.map((k) => (
+              <button
+                key={k}
+                onClick={() => setLevel(level === k ? 'all' : k)}
+                aria-pressed={level === k}
+                className={`flex items-center gap-2 capitalize transition-colors ${
+                  level === k ? 'text-bone' : 'text-bone-faint hover:text-bone-dim'
+                }`}
+              >
+                <span aria-hidden className={`h-1.5 w-1.5 rounded-full ${DOT[k]}`} />
+                {k}
+              </button>
+            ))}
+            <span className="ml-auto text-bone-faint">{shown.length} of {MENU.length}</span>
+          </div>
+        </Reveal>
+
+        {/* Cards */}
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence initial={false} mode="popLayout">
             {shown.map((item) => (
               <motion.li
                 key={item.name}
                 layout
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                className="group border-b border-line-soft last:border-0"
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="group overflow-hidden rounded-2xl border border-line-soft bg-ink-2/40"
               >
-                <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2 px-5 py-5 transition-colors duration-300 group-hover:bg-ink-2/60 sm:px-7">
-                  <span
-                    aria-hidden
-                    className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${DOT[item.intensity]}`}
-                  />
-                  <div className="min-w-0 flex-1 basis-52">
-                    <p className="text-[0.95rem] font-medium text-bone">{item.name}</p>
-                    <p className="mt-1 text-xs text-bone-faint">{item.note}</p>
+                <Photo
+                  img={item.image}
+                  className="aspect-[16/10] w-full"
+                  imgClassName="transition-transform duration-700 group-hover:scale-[1.04]"
+                  sizes="(min-width:1024px) 30vw, (min-width:640px) 45vw, 100vw"
+                >
+                  <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-ink/70 px-2.5 py-1 text-[0.62rem] font-medium capitalize text-bone backdrop-blur">
+                    <span aria-hidden className={`h-1.5 w-1.5 rounded-full ${DOT[item.intensity]}`} />
+                    {item.intensity}
+                  </span>
+                </Photo>
+                <div className="p-5">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <p className="text-[0.95rem] font-medium leading-snug text-bone">{item.name}</p>
+                    <p className="shrink-0 font-mono text-sm text-ember">{item.price}</p>
                   </div>
-                  <p className="hidden w-40 shrink-0 text-xs text-bone-faint md:block">{item.where}</p>
-                  <p className="ml-auto shrink-0 font-mono text-sm text-bone-dim">{item.price}</p>
+                  <p className="mt-1 flex flex-wrap gap-x-2 text-[0.7rem] text-bone-faint">
+                    <span>{item.where}</span>
+                    <span aria-hidden>·</span>
+                    <span>{item.duration}</span>
+                  </p>
+                  <p className="mt-2.5 text-[0.8rem] leading-relaxed text-bone-faint">{item.note}</p>
                 </div>
               </motion.li>
             ))}
           </AnimatePresence>
         </ul>
-
-        <Reveal>
-          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-bone-faint">
-            {(['easy', 'moderate', 'full send'] as const).map((k) => (
-              <span key={k} className="flex items-center gap-2 capitalize">
-                <span aria-hidden className={`h-1.5 w-1.5 rounded-full ${DOT[k]}`} />
-                {k}
-              </span>
-            ))}
-            <span className="ml-auto">Showing {shown.length} of {MENU.length}</span>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

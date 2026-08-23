@@ -48,7 +48,7 @@ export const STATS = [
   { value: '9', label: 'days on the island', sub: 'Jun 21 – 29' },
   { value: '3', label: 'basecamps', sub: 'Uluwatu · Ubud · Canggu' },
   { value: '10', label: 'of us', sub: 'private villas, split evenly' },
-  { value: '$2.2k', label: 'all-in, per person', sub: 'flights, beds, food, the lot' },
+  { value: '$1.7k', label: 'all-in, per person', sub: 'lean tier — flights, beds, food, the lot' },
 ] as const;
 
 /* ─────────────────────────────  FLIGHTS  ───────────────────────────── */
@@ -157,6 +157,10 @@ export type Stay = {
   bedrooms: string;
   rate: string;
   detail: string;
+  /** Search link to the property's live listing — real photos and tonight's rate. */
+  link?: string;
+  /** Search-verified area/property photo; a gradient stands in when unverified. */
+  image?: Img;
 };
 
 export type Basecamp = {
@@ -189,18 +193,21 @@ export const BASECAMPS: Basecamp[] = [
     stays: [
       {
         name: 'Villa Anak · Ungasan',
+        link: 'https://www.google.com/search?q=%22Villa+Anak%22+Ungasan+Bali+agoda+OR+booking',
         bedrooms: '5 BR villa',
         rate: '$280 – 340 / night whole villa',
         detail: 'Real, bookable 5-bed/5-bath private-pool villa on Booking.com — whole-house privacy for ten at $30 a head a night. The best rebuttal to the $1,000-a-night villa myth.',
       },
       {
         name: 'Swiss-Belresort Pecatu',
+        link: 'https://www.google.com/search?q=%22Swiss-Belresort+Pecatu%22+Bali+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$45 – 60 / room / night',
         detail: 'Chain 4-star with a big pool on the Bukit, VAT included. The whole group sleeps well for ~$260 a night total — about $26 a head.',
       },
       {
         name: 'Padang-Padang Inn',
+        link: 'https://www.google.com/search?q=%22Padang-Padang+Inn%22+Pecatu+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$35 – 50 / room / night',
         detail: 'Rated-8.2 pool inn a few minutes on foot from Padang Padang beach. The lean option at ~$21 a head.',
@@ -223,18 +230,21 @@ export const BASECAMPS: Basecamp[] = [
     stays: [
       {
         name: 'Dupa Ubud Villa',
+        link: 'https://www.google.com/search?q=%22Dupa+Ubud+Villa%22+Ubud+agoda+OR+booking',
         bedrooms: '5 pool-villa units',
         rate: '$38 – 48 / unit / night in June',
         detail: 'The arbitrage of the trip: every couple gets its own standalone private-pool villa for guesthouse money — the exact product agencies resell at $700+ a night. ~$24 a head.',
       },
       {
         name: 'Bhuwana Ubud Hotel',
+        link: 'https://www.google.com/search?q=%22Bhuwana+Ubud+Hotel%22+farming+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$35 – 55 / room / night, breakfast incl.',
         detail: 'Rice-field pool hotel with its own farm just outside the centre, backed by actual-paid rates of $26–37 a room. Bulletproof value at ~$23 a head.',
       },
       {
         name: 'Element by Westin Bali Ubud',
+        link: 'https://www.google.com/search?q=%22Element+Bali+Ubud%22+Westin+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$90 – 130 / room / night',
         detail: 'The one branded jungle-resort splurge, with verified $82 lows if we book the cheap bucket early. ~$55 a head and reads as a flex, not a shock.',
@@ -257,12 +267,14 @@ export const BASECAMPS: Basecamp[] = [
     stays: [
       {
         name: 'FRii Bali Echo Beach',
+        link: 'https://www.google.com/search?q=%22FRii+Bali+Echo+Beach%22+Canggu+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$46 – 66 / room / night',
         detail: 'Pool hotel literally on Echo Beach with verified $37–46 baselines — the best location-per-dollar of the whole trip. ~$28 a head.',
       },
       {
         name: 'Aston Canggu Beach Resort',
+        link: 'https://www.google.com/search?q=%22Aston+Canggu+Beach+Resort%22++agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$56 – 80 / room / night, breakfast incl.',
         detail: 'Rooftop pool, short walk to Batu Bolong. $47–52 baselines from two independent aggregators; ~$34 a head in June.',
@@ -714,8 +726,8 @@ export const BUDGET: BudgetLine[] = [
 ];
 
 export const BUDGET_TIERS = [
-  { id: 'lean', name: 'Lean', blurb: 'EVA/China Airlines booked early, guesthouse track, mostly warungs. Still pool inns, not hostels.' },
-  { id: 'comfort', name: 'Comfort', blurb: 'The actual pitch. SQ economy, private pool villas and beachfront hotels, the full activity menu.' },
+  { id: 'lean', name: 'Lean', blurb: 'The default pitch: EVA/China Airlines booked early, pool guesthouses (not hostels), mostly warungs, the essential activities.' },
+  { id: 'comfort', name: 'Comfort', blurb: 'The upgrade most will pick per-line: SQ economy, private pool villas and beachfront hotels, the full menu.' },
   { id: 'send', name: 'Full send', blurb: 'Premium Economy on the long leg, the Westin in Ubud, 4-star everywhere, every activity.' },
 ] as const;
 

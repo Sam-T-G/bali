@@ -33,7 +33,7 @@ function RollingTotal({ value }: { value: number }) {
 }
 
 export function Budget() {
-  const [tier, setTier] = useState<BudgetTier>('comfort');
+  const [tier, setTier] = useState<BudgetTier>('lean');
 
   const total = BUDGET.reduce((sum, line) => sum + line[tier], 0);
   const flights = BUDGET[0][tier];
