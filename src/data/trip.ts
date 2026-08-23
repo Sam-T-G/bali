@@ -1,4 +1,4 @@
-import { IMAGES, type Img } from './images';
+import { IMAGES, pageImg, type Img } from './images';
 
 /* ─────────────────────────────  TRIP SHELL  ───────────────────────────── */
 
@@ -193,6 +193,7 @@ export const BASECAMPS: Basecamp[] = [
     stays: [
       {
         name: 'Villa Anak · Ungasan',
+        image: pageImg('https://unsplash.com/photos/MK7q_XxTfAM', 'Melasti Beach cliffs, Ungasan — the villa\'s neighbourhood', ['#0a2540', '#e0864a']),
         link: 'https://www.google.com/search?q=%22Villa+Anak%22+Ungasan+Bali+agoda+OR+booking',
         bedrooms: '5 BR villa',
         rate: '$280 – 340 / night whole villa',
@@ -200,6 +201,7 @@ export const BASECAMPS: Basecamp[] = [
       },
       {
         name: 'Swiss-Belresort Pecatu',
+        image: pageImg('https://unsplash.com/photos/ShQzSZzD0CA', 'Sunset over Bingin Beach, minutes from Pecatu', ['#0a2540', '#e0864a']),
         link: 'https://www.google.com/search?q=%22Swiss-Belresort+Pecatu%22+Bali+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$45 – 60 / room / night',
@@ -207,6 +209,7 @@ export const BASECAMPS: Basecamp[] = [
       },
       {
         name: 'Padang-Padang Inn',
+        image: pageImg('https://unsplash.com/photos/aerial-shot-of-seashore-EztqREO1cag', 'Padang Padang beach cove, a short walk from the inn', ['#0a2540', '#e0864a']),
         link: 'https://www.google.com/search?q=%22Padang-Padang+Inn%22+Pecatu+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$35 – 50 / room / night',
@@ -230,6 +233,7 @@ export const BASECAMPS: Basecamp[] = [
     stays: [
       {
         name: 'Dupa Ubud Villa',
+        image: pageImg('https://unsplash.com/photos/VcqoaqKpNYw', 'The Campuhan ridge valleys of Ubud', ['#0c2b16', '#8bbf3f']),
         link: 'https://www.google.com/search?q=%22Dupa+Ubud+Villa%22+Ubud+agoda+OR+booking',
         bedrooms: '5 pool-villa units',
         rate: '$38 – 48 / unit / night in June',
@@ -237,6 +241,7 @@ export const BASECAMPS: Basecamp[] = [
       },
       {
         name: 'Bhuwana Ubud Hotel',
+        image: pageImg('https://unsplash.com/photos/rice-terraces-in-tegelalang-bali--2WlTWZLnRc', 'Working rice terraces — the hotel\'s setting north of Ubud', ['#0c2b16', '#8bbf3f']),
         link: 'https://www.google.com/search?q=%22Bhuwana+Ubud+Hotel%22+farming+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$35 – 55 / room / night, breakfast incl.',
@@ -244,6 +249,7 @@ export const BASECAMPS: Basecamp[] = [
       },
       {
         name: 'Element by Westin Bali Ubud',
+        image: pageImg('https://unsplash.com/photos/VcqoaqKpNYw', 'Ubud jungle valley, the resort\'s terrain', ['#0c2b16', '#8bbf3f']),
         link: 'https://www.google.com/search?q=%22Element+Bali+Ubud%22+Westin+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$90 – 130 / room / night',
@@ -267,6 +273,7 @@ export const BASECAMPS: Basecamp[] = [
     stays: [
       {
         name: 'FRii Bali Echo Beach',
+        image: pageImg('https://unsplash.com/photos/people-at-the-beach-during-golden-hour-7An3SypqhPk', 'Golden hour on the Canggu sand the hotel sits on', ['#2a1020', '#ef7d3a']),
         link: 'https://www.google.com/search?q=%22FRii+Bali+Echo+Beach%22+Canggu+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$46 – 66 / room / night',
@@ -274,6 +281,7 @@ export const BASECAMPS: Basecamp[] = [
       },
       {
         name: 'Aston Canggu Beach Resort',
+        image: pageImg('https://unsplash.com/photos/people-on-a-beach-zYbIdDXTjgQ', 'Batu Bolong beach, a short walk from the hotel', ['#2a1020', '#ef7d3a']),
         link: 'https://www.google.com/search?q=%22Aston+Canggu+Beach+Resort%22++agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$56 – 80 / room / night, breakfast incl.',
@@ -636,37 +644,6 @@ export const DAYS: Day[] = [
     },
     tracks: [],
   },
-];
-
-/* ─────────────────────────────  THE MENU  ───────────────────────────── */
-
-export type MenuItem = {
-  name: string;
-  where: string;
-  price: string;
-  usd: number;
-  intensity: 'easy' | 'moderate' | 'full send';
-  note: string;
-};
-
-export const MENU: MenuItem[] = [
-  { name: 'Nusa Penida day trip', where: 'Ex-Sanur', price: '$45 – 65', usd: 55, intensity: 'full send', note: 'Fast boat, Kelingking, Broken Beach, snorkel. 12 hours door to door, group-tour rate.' },
-  { name: 'Mount Batur sunrise trek', where: 'Kintamani', price: '$30 – 45', usd: 38, intensity: 'full send', note: '2am pickup, 1,717m, breakfast on the crater rim. Book on Klook/GetYourGuide, not the hotel desk.' },
-  { name: 'Ayung River rafting', where: 'Ubud', price: '$40 – 50', usd: 45, intensity: 'moderate', note: 'Class II–III, 12km, jungle gorge, lunch included.' },
-  { name: 'ATV through the paddies', where: 'Ubud', price: 'from $50', usd: 55, intensity: 'moderate', note: 'Guide, gear and insurance included. Extremely muddy.' },
-  { name: 'Surf lesson + board', where: 'Batu Bolong / Padang', price: '$25 – 35', usd: 30, intensity: 'moderate', note: 'Two hours, instructor, soft-top. Beginners genuinely stand up.' },
-  { name: 'Kecak fire dance', where: 'Uluwatu Temple', price: '$9 + $3 entry', usd: 12, intensity: 'easy', note: 'IDR 150,000. Sunset show, book the ocean-side seats.' },
-  { name: 'Sacred Monkey Forest', where: 'Ubud', price: '$5 – 6', usd: 6, intensity: 'easy', note: 'IDR 80k weekday / 100k weekend. Do not make eye contact.' },
-  { name: 'Tirta Empul purification', where: 'Tampaksiring', price: '$5', usd: 5, intensity: 'easy', note: 'IDR 75,000. Sarong provided. Go at 08:00.' },
-  { name: 'Tegenungan Waterfall', where: 'En route to Ubud', price: '$1.30', usd: 2, intensity: 'easy', note: 'IDR 20,000. Best 8–10am before the buses.' },
-  { name: 'Tegalalang rice terraces', where: 'Ubud', price: '$1.50 + swings', usd: 15, intensity: 'easy', note: 'Entry is pennies; the jungle swing is $10–35 on top.' },
-  { name: 'Campuhan Ridge Walk', where: 'Ubud', price: 'Free', usd: 0, intensity: 'easy', note: '1.7km ridgeline between two gorges. Dawn or dusk only.' },
-  { name: 'Balinese massage, 1h', where: 'Local spas', price: '$8 – 15', usd: 12, intensity: 'easy', note: 'At neighbourhood spas, not hotel spas. The single best value on the island — do it more than once.' },
-  { name: 'Cliffside day club', where: 'Ulu Cliffhouse / Savaya', price: '$15 – 60', usd: 40, intensity: 'easy', note: 'Entry ~IDR 250k, or split a daybed minimum spend.' },
-  { name: 'Beach club daybed', where: 'Finns / Atlas / La Brisa', price: '$0 – 80', usd: 45, intensity: 'easy', note: 'La Brisa free before 4pm; Atlas daybeds come with F&B credit.' },
-  { name: 'Balinese cooking class', where: 'Ubud', price: '$25 – 35', usd: 30, intensity: 'easy', note: 'Market run at dawn, then you cook lunch. Klook rate, better than it sounds.' },
-  { name: 'Yoga Barn drop-in', where: 'Ubud', price: '$12', usd: 12, intensity: 'easy', note: 'Book the day before — the good classes fill.' },
-  { name: 'Scooter hire, per day', where: 'Anywhere', price: '$6 – 8', usd: 7, intensity: 'moderate', note: 'You need an international licence with a motorcycle endorsement. Police do check.' },
 ];
 
 /* ─────────────────────────────  THE MONEY  ───────────────────────────── */

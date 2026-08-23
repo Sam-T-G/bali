@@ -60,7 +60,12 @@ from the `BUDGET` array, so editing a line item updates every total on the page.
 
 ## Photos — read this before sharing
 
-Photos are hotlinked from Unsplash and centralised in **`src/data/images.ts`**.
+Photos are hotlinked from Unsplash and centralised in **`src/data/images.ts`**
+and **`src/data/menu.ts`**. Named-place photos use `unsplash.com/photos/<slug>/download`
+URLs whose photo pages were found in live search results with the subject named
+in the title — no guessed IDs. Subjects that couldn't be verified render a
+gradient placeholder instead of a wrong photo, and lodging cards link out to
+the property's live listing for real property photos.
 Each entry pairs a URL with a bespoke gradient, and the `<Photo>` component
 falls back to that gradient if the image fails — so the deck degrades to
 something that still looks deliberate rather than showing broken-image icons.

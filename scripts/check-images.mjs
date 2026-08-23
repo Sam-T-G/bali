@@ -1,65 +1,30 @@
 #!/usr/bin/env node
 /**
- * Verifies every photo URL in src/data/images.ts still resolves.
- *
- * Run this locally (not in a restricted sandbox) before you share the deck:
- *   npm run check:images
- *
- * Any URL that fails should be replaced in src/data/images.ts. The site will
- * still render a gradient in its place, but a real photo is better.
+ * Verifies every photo URL referenced in src/data/*.ts still resolves.
+ * Handles both direct CDN URLs (images.unsplash.com/...) and photo-page
+ * hotlinks (unsplash.com/photos/<slug> -> /download redirect).
+ * Run locally before sharing: npm run check:images
  */
-
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
-const here = dirname(fileURLToPath(import.meta.url));
-const manifest = resolve(here, '../src/data/images.ts');
-
-const source = await readFile(manifest, 'utf8');
-
-// Pull the photo ids out of the u('photo-...') helper calls.
-const ids = [...source.matchAll(/u\('(photo-[^']+)'/g)].map((m) => m[1]);
-const keys = [...source.matchAll(/^  (\w+): \{$/gm)].map((m) => m[1]);
-
-if (ids.length === 0) {
-  console.error('No photo ids found — did the manifest format change?');
-  process.exit(1);
+const dataDir = resolve(dirname(fileURLToPath(import.meta.url)), '../src/data');
+const urls = new Set();
+for (const f of await readdir(dataDir)) {
+  if (!f.endsWith('.ts')) continue;
+  const src = await readFile(resolve(dataDir, f), 'utf8');
+  for (const m of src.matchAll(/https:\/\/unsplash\.com\/photos\/[^'"]+/g)) urls.add(m[0] + '/download?force=true&w=200');
+  for (const m of src.matchAll(/https:\/\/images\.unsplash\.com\/[^'"?]+/g)) urls.add(m[0] + '?w=200&q=50');
 }
 
-const url = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=400&q=60`;
-
-console.log(`Checking ${ids.length} photos…\n`);
-
-const results = await Promise.all(
-  ids.map(async (id, i) => {
-    const label = keys[i] ?? id;
-    try {
-      const res = await fetch(url(id), { method: 'HEAD', redirect: 'follow' });
-      return { label, id, ok: res.ok, status: res.status };
-    } catch (err) {
-      return { label, id, ok: false, status: err.code ?? 'network error' };
-    }
-  }),
-);
-
+console.log(`Checking ${urls.size} photo URLs...\n`);
 let failed = 0;
-for (const r of results) {
-  if (r.ok) {
-    console.log(`  ok    ${r.label.padEnd(16)} ${r.id}`);
-  } else {
-    failed += 1;
-    console.log(`  FAIL  ${r.label.padEnd(16)} ${r.id}  (${r.status})`);
-  }
-}
-
-console.log(
-  `\n${results.length - failed}/${results.length} resolved.` +
-    (failed
-      ? `\n\n${failed} need replacing in src/data/images.ts.\n` +
-        `Find a photo on unsplash.com, hit Download, and paste its photo-... id.\n` +
-        `Until then those slots render their gradient fallback, which still looks fine.`
-      : '\nAll good.'),
-);
-
-process.exit(failed > 0 ? 1 : 0);
+await Promise.all([...urls].map(async (u) => {
+  try {
+    const res = await fetch(u, { method: 'HEAD', redirect: 'follow' });
+    if (!res.ok) { failed++; console.log(`  FAIL ${res.status}  ${u}`); }
+  } catch (e) { failed++; console.log(`  FAIL ${e.code ?? 'net'}  ${u}`); }
+}));
+console.log(failed ? `\n${failed} URL(s) need replacing — swap them in src/data/. Gradients cover failures meanwhile.` : 'All resolve.');
+process.exit(failed ? 1 : 0);

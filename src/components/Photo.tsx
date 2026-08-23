@@ -31,7 +31,7 @@ export function Photo({ img, className = '', imgClassName = '', priority, sizes,
         backgroundImage: `linear-gradient(135deg, ${img.fallback[0]} 0%, ${img.fallback[1]} 100%)`,
       }}
     >
-      {state !== 'failed' && (
+      {img.src !== '' && state !== 'failed' && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={img.src}

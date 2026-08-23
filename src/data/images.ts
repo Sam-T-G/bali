@@ -32,6 +32,9 @@ const u = (id: string, w = 1600) =>
 export const fromPage = (pageUrl: string, w = 1600) =>
   `${pageUrl.replace(/\/+$/, '')}/download?force=true&w=${w}`;
 
+/** A gradient-only placeholder for subjects whose photo hunt found no verified match. */
+export const ph = (alt: string, fallback: [string, string]): Img => ({ src: '', alt, fallback });
+
 /** An Img built from a search-verified photo page; gradient still covers failure. */
 export const pageImg = (pageUrl: string, alt: string, fallback: [string, string]): Img => ({
   src: fromPage(pageUrl),
@@ -55,32 +58,32 @@ export const IMAGES = {
   },
 
   uluwatu: {
-    src: u('photo-1531778272849-d1dd22444c06'),
-    alt: 'Limestone cliffs dropping into turquoise water on the Bukit Peninsula',
+    src: fromPage('https://unsplash.com/photos/MK7q_XxTfAM'),
+    alt: 'Melasti Beach beneath its carved limestone cliffs, Ungasan, on the Bukit Peninsula',
     fallback: ['#0a2540', '#e0864a'],
     credit: 'Unsplash',
   },
   uluwatuTemple: {
-    src: u('photo-1596422846543-75c6fc197f07'),
-    alt: 'Pura Luhur Uluwatu perched on a sea cliff at dusk',
+    src: fromPage('https://unsplash.com/photos/large-crowd-watches-a-fiery-performance-at-night-uGJzm_cc8gk'),
+    alt: 'The Kecak fire dance at Uluwatu — a crowd rings the fire as night falls',
     fallback: ['#1c1233', '#d4682e'],
     credit: 'Unsplash',
   },
   bingin: {
-    src: u('photo-1512100356356-de1b84283e18'),
-    alt: 'Surfers paddling out at a reef break below cliffside warungs',
+    src: fromPage('https://unsplash.com/photos/ShQzSZzD0CA'),
+    alt: 'Sunset from a warung table above Bingin Beach',
     fallback: ['#062b33', '#5fb0a5'],
     credit: 'Unsplash',
   },
 
   ubud: {
-    src: u('photo-1518548419970-58e3b4079ab2'),
-    alt: 'Terraced rice paddies stepping down a green valley near Ubud',
+    src: fromPage('https://unsplash.com/photos/VcqoaqKpNYw'),
+    alt: 'The Campuhan Ridge Walk winding between two green river valleys, Ubud',
     fallback: ['#0c2b16', '#8bbf3f'],
     credit: 'Unsplash',
   },
   riceTerrace: {
-    src: u('photo-1573790387438-4da905039392'),
+    src: fromPage('https://unsplash.com/photos/rice-terraces-in-tegelalang-bali--2WlTWZLnRc'),
     alt: 'Tegalalang rice terraces in morning light',
     fallback: ['#10331a', '#a7c957'],
     credit: 'Unsplash',
@@ -98,27 +101,27 @@ export const IMAGES = {
     credit: 'Unsplash',
   },
   batur: {
-    src: u('photo-1570789210967-2cac24afeb00'),
-    alt: 'Sunrise above the clouds from a volcano summit',
+    src: fromPage('https://unsplash.com/photos/clouds-and-mountains-in-the-sky-1Q7SAzNIcmA'),
+    alt: 'Sunrise above the clouds from Mount Batur',
     fallback: ['#221033', '#f0913c'],
     credit: 'Unsplash',
   },
 
   canggu: {
-    src: u('photo-1546484475-7f7bd55792da'),
-    alt: 'Black-sand beach and sunset crowd on Bali’s west coast',
+    src: fromPage('https://unsplash.com/photos/people-at-the-beach-during-golden-hour-7An3SypqhPk'),
+    alt: 'Golden hour on the sand at Canggu',
     fallback: ['#2a1020', '#ef7d3a'],
     credit: 'Unsplash',
   },
   beachClub: {
-    src: u('photo-1559628233-100c798642d4'),
-    alt: 'Poolside beach club loungers facing the ocean at sunset',
+    src: fromPage('https://unsplash.com/photos/coconut-palms-and-swimming-pool-facing-ocean-bUvmhwQ-gsw'),
+    alt: 'Coconut palms and a pool facing the ocean at a Bali beach club',
     fallback: ['#331528', '#f2a65a'],
     credit: 'Unsplash',
   },
 
   nusaPenida: {
-    src: u('photo-1555400038-63f5ba517a47'),
+    src: fromPage('https://unsplash.com/photos/rock-cliff-tsnJEq4744s'),
     alt: 'Kelingking Beach — the T-Rex headland on Nusa Penida',
     fallback: ['#062a3d', '#48c3d6'],
     credit: 'Unsplash',
