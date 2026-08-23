@@ -116,16 +116,10 @@ export function Itinerary() {
             </Reveal>
           </div>
           <Reveal i={2}>
-            <div className="max-w-sm space-y-3 text-sm leading-relaxed text-bone-dim">
-              <p>
-                The <span className="text-bone">anchor</span> is the one thing the group does together —
-                usually a dinner or a sunset. Turn up for that and you have held up your end.
-              </p>
-              <p className="text-xs text-bone-faint">
-                Around it, every day offers a hard option and a soft one. Nobody tracks which you pick,
-                and you can switch mid-trip.
-              </p>
-            </div>
+            <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
+              The <span className="text-bone">anchor</span> is the one thing we do together. Either side
+              of it: a hard option and a soft one. Nobody keeps score.
+            </p>
           </Reveal>
         </div>
 

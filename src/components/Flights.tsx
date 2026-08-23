@@ -65,8 +65,8 @@ export function Flights() {
           </div>
           <Reveal i={2}>
             <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
-              The times below are the Singapore Airlines routing — the comfort pick. A quality one-stop
-              on EVA or China Airlines runs ~$200 less; the cabin switcher has all three tiers.
+              Times below are the Singapore Airlines routing. EVA / China Airlines runs ~$200 less —
+              all three tiers in the switcher.
             </p>
           </Reveal>
         </div>

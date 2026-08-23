@@ -92,9 +92,8 @@ export function Pitch() {
 
         <Reveal i={3}>
           <p className="mt-6 text-xs leading-relaxed text-bone-faint">
-            Every price on this page was researched in {TRIP.pricedOn} for June 2027 travel and is quoted per
-            person in US dollars. Sources are listed at the bottom. Fares and villa rates move — treat these as
-            well-researched estimates, not quotes.
+            Everything is per person in USD, priced {TRIP.pricedOn} from live listing rates. Estimates,
+            not quotes — sources at the bottom.
           </p>
         </Reveal>
       </div>

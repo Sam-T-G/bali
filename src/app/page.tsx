@@ -1,5 +1,6 @@
 import { Nav } from '@/components/Nav';
 import { Hero } from '@/components/Hero';
+import { TheNumber } from '@/components/TheNumber';
 import { Pitch } from '@/components/Pitch';
 import { Flights } from '@/components/Flights';
 import { Basecamps } from '@/components/Basecamps';
@@ -16,6 +17,7 @@ export default function Page() {
       <Nav />
       <main>
         <Hero />
+        <TheNumber />
         <Pitch />
         <Flights />
         <Basecamps />

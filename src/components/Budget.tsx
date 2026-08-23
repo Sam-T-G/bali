@@ -56,8 +56,7 @@ export function Budget() {
           </div>
           <Reveal i={2}>
             <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
-              Per person, in US dollars, with shared costs already divided by {TRIP.partySize}. Villa tax and
-              service, the 21% restaurant markup, visa and levy — all in.
+              Per person, shared costs ÷ {TRIP.partySize}, every tax and fee already in.
             </p>
           </Reveal>
         </div>

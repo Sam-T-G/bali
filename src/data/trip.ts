@@ -19,28 +19,20 @@ export const TRIP = {
 export const ALT_DATES = {
   label: 'Cheaper window',
   body:
-    'Depart Mon Jun 21 instead: Monday fares consistently price under weekend ones on this route, and ' +
-    'landing home Tue Jun 29 or Wed Jun 30 keeps the trip to 6–7 island nights — roughly $80–170 less ' +
-    'per person all-in and one less PTO day. The vote between windows is on the table below the budget.',
+    'Departing Mon Jun 21 instead prices under the weekend fare and, landing home Jun 29–30, saves ' +
+    'roughly $80–170 a head and a PTO day. Open for a vote.',
 } as const;
 
 /* ─────────────────────────────  THE PITCH  ───────────────────────────── */
 
 export const PITCH = {
-  kicker: 'The proposal',
-  heading: 'One island, three completely different weeks, stacked back to back.',
+  kicker: 'The plan',
+  heading: 'Three basecamps. One anchor a day. Everything else is optional.',
   body: [
-    'Bali gets pitched as one place. It is not. The Bukit Peninsula is limestone cliffs and reef breaks. ' +
-    'Ubud is river gorge and rice terrace, forty minutes inland and ten degrees cooler. Canggu is black sand ' +
-    'and a sunset scene that runs until it does not.',
-    'So we do all three. Three nights on the cliffs, three in the jungle, two on the coast — each basecamp a ' +
-    'single villa the whole group shares, each move under two hours in a van.',
-    'Priced against what these places actually list for on Agoda and Booking — not what travel blogs ' +
-    'showcase. The real Bali market puts ten friends in private pool villas and beachfront hotels for ' +
-    'about $27 a person a night, and the whole trip clears at roughly the cost of the flight plus $800.',
-    'The part that actually matters: nobody has to do anything. Every day has one anchor — a dinner, a sunset, ' +
-    'one thing we do together — and everything either side of it is opt-in. Sunrise volcano at 2am and a spa ' +
-    'day are the same day. Show up for the anchor, do what you want with the rest.',
+    'Cliffs in Uluwatu, jungle in Ubud, black sand in Canggu — three nights, three nights, two nights, ' +
+    'each move under two hours in our own van.',
+    'Every day has one anchor the group does together — usually a dinner or a sunset. Everything either ' +
+    'side of it is opt-in: the 2am volcano and the noon spa day are the same day, and nobody keeps score.',
   ],
 } as const;
 
@@ -187,8 +179,7 @@ export const BASECAMPS: Basecamp[] = [
     image: IMAGES.uluwatu,
     accent: '#e0864a',
     pitch:
-      'A limestone shelf on the southern tip of the island, seventy metres above the Indian Ocean. World-class ' +
-      'reef breaks below, cliff bars above, and a sunset that the whole peninsula turns around to watch.',
+      'Limestone cliffs seventy metres over the Indian Ocean — reef breaks below, cliff bars above, and the island’s best sunsets.',
     vibe: ['Cliffs + reef breaks', 'Sunset bars', 'Slowest mornings of the trip'],
     stays: [
       {
@@ -197,7 +188,7 @@ export const BASECAMPS: Basecamp[] = [
         link: 'https://www.google.com/search?q=%22Villa+Anak%22+Ungasan+Bali+agoda+OR+booking',
         bedrooms: '5 BR villa',
         rate: '$280 – 340 / night whole villa',
-        detail: 'Real, bookable 5-bed/5-bath private-pool villa on Booking.com — whole-house privacy for ten at $30 a head a night. The best rebuttal to the $1,000-a-night villa myth.',
+        detail: 'A real 5-bed private-pool villa — whole-house privacy for ten at $30 a head.',
       },
       {
         name: 'Swiss-Belresort Pecatu',
@@ -205,7 +196,7 @@ export const BASECAMPS: Basecamp[] = [
         link: 'https://www.google.com/search?q=%22Swiss-Belresort+Pecatu%22+Bali+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$45 – 60 / room / night',
-        detail: 'Chain 4-star with a big pool on the Bukit, VAT included. The whole group sleeps well for ~$260 a night total — about $26 a head.',
+        detail: 'Chain 4-star with a big pool — ~$26 a head, tax in.',
       },
       {
         name: 'Padang-Padang Inn',
@@ -213,7 +204,7 @@ export const BASECAMPS: Basecamp[] = [
         link: 'https://www.google.com/search?q=%22Padang-Padang+Inn%22+Pecatu+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$35 – 50 / room / night',
-        detail: 'Rated-8.2 pool inn a few minutes on foot from Padang Padang beach. The lean option at ~$21 a head.',
+        detail: 'Pool inn a short walk from Padang Padang beach — the lean pick at ~$21 a head.',
       },
     ],
     transferIn: 'DPS → Uluwatu · 45–60 min · two vans',
@@ -227,8 +218,7 @@ export const BASECAMPS: Basecamp[] = [
     image: IMAGES.ubud,
     accent: '#8bbf3f',
     pitch:
-      'Inland and uphill: river gorges, terraced paddies, and a town that has been the island’s cultural centre ' +
-      'for a century. Cooler, greener, and where the trip stops being a beach holiday for three days.',
+      'River gorges, rice terraces, and the island’s cultural capital — cooler, greener, and a different trip entirely for three days.',
     vibe: ['Rice terrace + gorge', 'Volcano at sunrise', 'Best food on the island'],
     stays: [
       {
@@ -237,7 +227,7 @@ export const BASECAMPS: Basecamp[] = [
         link: 'https://www.google.com/search?q=%22Dupa+Ubud+Villa%22+Ubud+agoda+OR+booking',
         bedrooms: '5 pool-villa units',
         rate: '$38 – 48 / unit / night in June',
-        detail: 'The arbitrage of the trip: every couple gets its own standalone private-pool villa for guesthouse money — the exact product agencies resell at $700+ a night. ~$24 a head.',
+        detail: 'Every couple gets its own private-pool villa for guesthouse money — ~$24 a head.',
       },
       {
         name: 'Bhuwana Ubud Hotel',
@@ -245,7 +235,7 @@ export const BASECAMPS: Basecamp[] = [
         link: 'https://www.google.com/search?q=%22Bhuwana+Ubud+Hotel%22+farming+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$35 – 55 / room / night, breakfast incl.',
-        detail: 'Rice-field pool hotel with its own farm just outside the centre, backed by actual-paid rates of $26–37 a room. Bulletproof value at ~$23 a head.',
+        detail: 'Rice-field pool hotel with its own farm — ~$23 a head, breakfast in.',
       },
       {
         name: 'Element by Westin Bali Ubud',
@@ -253,7 +243,7 @@ export const BASECAMPS: Basecamp[] = [
         link: 'https://www.google.com/search?q=%22Element+Bali+Ubud%22+Westin+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$90 – 130 / room / night',
-        detail: 'The one branded jungle-resort splurge, with verified $82 lows if we book the cheap bucket early. ~$55 a head and reads as a flex, not a shock.',
+        detail: 'The one branded jungle-resort splurge — ~$55 a head if we book early.',
       },
     ],
     transferIn: 'Uluwatu → Ubud · ~2h · stop at Tegenungan Waterfall en route',
@@ -267,8 +257,7 @@ export const BASECAMPS: Basecamp[] = [
     image: IMAGES.canggu,
     accent: '#ef7d3a',
     pitch:
-      'Black sand, a beginner-friendly beach break, and the densest concentration of good food and loud sunsets ' +
-      'on the island. Two nights is exactly right — long enough to enjoy it, short enough to leave wanting more.',
+      'Black sand, a learn-to-surf break, and the island’s loudest sunsets. Two nights is exactly right.',
     vibe: ['Beach clubs', 'Learn-to-surf break', 'Last-night energy'],
     stays: [
       {
@@ -277,7 +266,7 @@ export const BASECAMPS: Basecamp[] = [
         link: 'https://www.google.com/search?q=%22FRii+Bali+Echo+Beach%22+Canggu+agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$46 – 66 / room / night',
-        detail: 'Pool hotel literally on Echo Beach with verified $37–46 baselines — the best location-per-dollar of the whole trip. ~$28 a head.',
+        detail: 'Pool hotel directly on Echo Beach — the best location-per-dollar of the trip, ~$28 a head.',
       },
       {
         name: 'Aston Canggu Beach Resort',
@@ -285,13 +274,13 @@ export const BASECAMPS: Basecamp[] = [
         link: 'https://www.google.com/search?q=%22Aston+Canggu+Beach+Resort%22++agoda+OR+booking',
         bedrooms: '5 rooms',
         rate: '$56 – 80 / room / night, breakfast incl.',
-        detail: 'Rooftop pool, short walk to Batu Bolong. $47–52 baselines from two independent aggregators; ~$34 a head in June.',
+        detail: 'Rooftop pool, short walk to Batu Bolong — ~$34 a head in June.',
       },
       {
         name: 'Two adjacent 3BR pool villas',
         bedrooms: '2 × 3 BR',
         rate: '$155 – 250 / villa / night, tax incl.',
-        detail: 'Agoda has deep 3BR inventory at IDR 2.5–4M a night — two units beat one big villa on price and cancellation flexibility for a two-night stop. ~$40 a head.',
+        detail: 'Two adjacent 3BR villas beat one big one on price and flexibility — ~$40 a head.',
       },
     ],
     transferIn: 'Ubud → Canggu · ~1h 30m · stop at Tirta Empul en route',
@@ -334,8 +323,7 @@ export const DAYS: Day[] = [
       time: '19:30',
       title: 'Meet at Tom Bradley, Terminal B',
       body:
-        'Two and a half hours before push. Group check-in together so the bags tag through to Denpasar in one go. ' +
-        'Sunday does not happen — we cross the date line and land Monday morning in Singapore.',
+        'Group check-in at 19:30 so bags tag through to Bali. We cross the date line — Sunday does not happen.',
     },
     tracks: [],
   },
@@ -351,8 +339,7 @@ export const DAYS: Day[] = [
       time: '18:30',
       title: 'First night at the villa',
       body:
-        'Villa cook dinner on the terrace — $10–14 a head including the grocery run, which is the standard way ' +
-        'villa kitchens work here. Nobody is going anywhere on day one and nobody should.',
+        'Villa cook dinner on the terrace, $10–14 a head all-in. Nobody goes anywhere on day one.',
     },
     tracks: [
       {
@@ -360,8 +347,7 @@ export const DAYS: Day[] = [
         title: 'Sundowners at Single Fin',
         time: '17:00 – 19:00',
         body:
-          'Twelve minutes from the villa, cantilevered over the Uluwatu break. Beer runs about $3.50, cocktails $8. ' +
-          'Push through the jet lag and you will sleep on local time tonight.',
+          'Cantilevered over the Uluwatu break — $3.50 beers, and staying up kills the jet lag.',
         cost: '$20 – 35',
       },
       {
@@ -369,8 +355,7 @@ export const DAYS: Day[] = [
         title: 'Pool, and nothing else',
         time: 'All afternoon',
         body:
-          'You have been travelling for roughly 26 hours. The villa has a pool. This is a completely legitimate ' +
-          'use of day one and no one will give you grief for it.',
+          '26 hours of travel earns an afternoon in the pool. Fully legitimate.',
         cost: 'Free',
       },
     ],
@@ -387,9 +372,7 @@ export const DAYS: Day[] = [
       time: '17:00',
       title: 'Pura Luhur Uluwatu + Kecak fire dance',
       body:
-        'An 11th-century temple on a 70-metre cliff, and a hundred men chanting in a ring around a fire as the sun ' +
-        'drops behind them. Temple entry ~$3, dance ticket IDR 150,000 (~$9). Go early for a seat on the ocean side, ' +
-        'and hold onto your sunglasses — the macaques are professionals.',
+        'A cliff-top temple, a hundred men chanting around a fire, sunset behind. ~$13 all-in; ocean-side seats, and mind the monkeys.',
     },
     tracks: [
       {
@@ -397,8 +380,7 @@ export const DAYS: Day[] = [
         title: 'Dawn surf at Padang Padang',
         time: '06:00 – 09:00',
         body:
-          'Down the staircase, through the gap in the rock, and into one of the best waves on the Bukit. Board hire ' +
-          'about $7 a day; an instructor for the never-evers runs $25–35 for two hours.',
+          'Through the rock gap into one of the Bukit’s best waves. Boards $7, lessons $25–35.',
         cost: '$7 – 35',
       },
       {
@@ -406,8 +388,7 @@ export const DAYS: Day[] = [
         title: 'Cliffside day club',
         time: '11:00 – 16:00',
         body:
-          'Ulu Cliffhouse or Savaya — infinity pools cut into the cliff edge, DJs from midday, no obligation to ' +
-          'move for five hours. Entry around $15, or a daybed on a minimum spend the group can split.',
+          'Savaya or Ulu Cliffhouse — cliff-edge pools, DJs from midday, entry ~$15 or a split daybed.',
         cost: '$15 – 60',
       },
     ],
@@ -424,8 +405,7 @@ export const DAYS: Day[] = [
       time: '19:30',
       title: 'Seafood on the sand at Bingin',
       body:
-        'Warungs built into the cliff face, tables on the beach, whole grilled fish for about $12. The Penida crew ' +
-        'gets back around 18:30, so everyone lands at the same table regardless of how the day went.',
+        'Grilled fish on the sand at the cliff warungs, ~$12. The Penida crew is back by 18:30 — one table for everyone.',
     },
     tracks: [
       {
@@ -433,9 +413,7 @@ export const DAYS: Day[] = [
         title: 'Nusa Penida day trip',
         time: '06:15 – 18:30',
         body:
-          'An hour to Sanur, forty minutes on a fast boat, then Kelingking Beach — the T-Rex headland you have ' +
-          'seen a thousand times — plus Angel’s Billabong, Broken Beach and a snorkel stop. Long day, genuinely ' +
-          'spectacular, and the single most photographed thing we will do.',
+          'Fast boat to Kelingking, Broken Beach and a snorkel stop. Long day, most spectacular thing we will do.',
         cost: '$45 – 65',
       },
       {
@@ -443,8 +421,7 @@ export const DAYS: Day[] = [
         title: 'Spa, then Thomas Beach',
         time: 'Whenever',
         body:
-          'A long Balinese massage for $10–15 at a neighbourhood spa — a fraction of home prices, and better. Then the ' +
-          'staircase down to Thomas Beach, which is the quiet one the tour buses never find.',
+          'A $10–15 massage, then the staircase down to Thomas Beach — the quiet one.',
         cost: '$30',
       },
     ],
@@ -461,8 +438,7 @@ export const DAYS: Day[] = [
       time: '10:00',
       title: 'Convoy to Ubud, waterfall on the way',
       body:
-        'Two vans, bags in, out by ten. We break the drive at Tegenungan Waterfall (entry ~$1.30) — a wall of ' +
-        'water into a swimming pool fifteen minutes short of Ubud. Villa check-in mid-afternoon, then dinner in town.',
+        'Out by ten, swim stop at Tegenungan Waterfall (~$1.30), check-in mid-afternoon, dinner in town.',
     },
     tracks: [
       {
@@ -470,15 +446,14 @@ export const DAYS: Day[] = [
         title: 'Sidemen detour',
         time: 'Add ~2h',
         body:
-          'The long way round, through the rice-terrace valley under Mount Agung. Almost no tourists, and the ' +
-          'best drive on the island. Costs an extra two hours and is worth every minute.',
+          'The long way round through the Sidemen valley — the best drive on the island, +2 hours.',
         cost: 'Included in van hire',
       },
       {
         kind: 'cruise',
         title: 'Straight there',
         time: '10:00 – 12:00',
-        body: 'Direct run, at the villa by noon, in the pool by 12:15. Ubud is where the trip slows down anyway.',
+        body: 'Direct run — in the pool by 12:15.',
         cost: 'Included',
       },
     ],
@@ -495,9 +470,7 @@ export const DAYS: Day[] = [
       time: '07:30',
       title: 'Tegalalang before the crowds',
       body:
-        'On site by half seven, an hour ahead of the buses, when the light is still low across the terraces and ' +
-        'you can actually walk the paths. Entry ~$1.50 plus small donations at the ladder gates. Long breakfast in ' +
-        'town after — and the rest of the day is yours.',
+        'There by 7:30, an hour before the buses, ~$3. Long breakfast after; the rest of the day is yours.',
     },
     tracks: [
       {
@@ -505,8 +478,7 @@ export const DAYS: Day[] = [
         title: 'Ayung River rafting',
         time: '10:00 – 15:00',
         body:
-          'Twelve kilometres of class II–III through a jungle gorge, with carved stone reliefs in the canyon walls ' +
-          'and a waterfall you paddle straight under. Lunch included.',
+          '12km of class II–III through a jungle gorge, lunch included. Two rafts fits us exactly.',
         cost: '$40 – 50',
       },
       {
@@ -514,8 +486,7 @@ export const DAYS: Day[] = [
         title: 'Campuhan Ridge + café crawl',
         time: '06:30 – 12:00',
         body:
-          'A 1.7km ridgeline walk between two river valleys, free, best at dawn. Then Ubud’s café scene, which is ' +
-          'genuinely world-class and where half the group will end up spending the afternoon.',
+          'The free ridgeline walk at dawn, then Ubud’s genuinely world-class café scene.',
         cost: '$0 – 25',
       },
     ],
@@ -532,8 +503,7 @@ export const DAYS: Day[] = [
       time: '19:00',
       title: 'Long group dinner',
       body:
-        'The proper sit-down of the trip. Ubud has the island’s best kitchens — Locavore-tier tasting menus at the ' +
-        'top end, extraordinary $6 plates at the bottom. Budget $25–60 depending on where we land.',
+        'The proper sit-down. Ubud has the island’s best kitchens — budget $25–60 depending where we land.',
     },
     tracks: [
       {
@@ -541,9 +511,7 @@ export const DAYS: Day[] = [
         title: 'Mount Batur sunrise trek',
         time: '02:00 – 11:00',
         body:
-          'Pickup at 2am, two hours up a 1,717m active volcano in the dark, and sunrise from the crater rim over ' +
-          'Lake Batur with breakfast eggs cooked in a steam vent. Not technical, but it is a real hike and you ' +
-          'will need the head torch and a layer.',
+          '2am pickup, two hours up in the dark, sunrise over Lake Batur with eggs cooked in volcanic steam. $30–40.',
         cost: '$30 – 45',
       },
       {
@@ -551,8 +519,7 @@ export const DAYS: Day[] = [
         title: 'Yoga Barn, Monkey Forest, spa',
         time: '09:00 – 17:00',
         body:
-          'A drop-in class at the Yoga Barn (~$12), then the Sacred Monkey Forest — 12.5 hectares, 1,200 macaques, ' +
-          'four 14th-century temples, entry IDR 100,000 on weekends (~$6). Massage in the afternoon.',
+          'Yoga Barn drop-in (~$12), the Monkey Forest (~$6), massage in the afternoon.',
         cost: '$18 – 50',
       },
     ],
@@ -569,8 +536,7 @@ export const DAYS: Day[] = [
       time: '17:30',
       title: 'Sunday sunset on the west coast',
       body:
-        'La Brisa at Pererenan — driftwood build, free entry before 4pm, live music into the evening. The west-facing ' +
-        'coast means the sun goes down directly in front of you, which the Bukit cliffs never quite give you.',
+        'La Brisa, Pererenan — free before 4pm, live music, and the sun sets straight in front of you.',
     },
     tracks: [
       {
@@ -578,15 +544,14 @@ export const DAYS: Day[] = [
         title: 'Melukat at Tirta Empul',
         time: '08:00 – 10:30',
         body:
-          'A 10th-century water temple where Balinese Hindus have purified under the same spouts for a thousand ' +
-          'years. You can take part — sarong provided, entry IDR 75,000 (~$5). Go at opening; by ten it is packed.',
+          'The melukat purification under thousand-year-old spouts — take part, sarong provided, ~$5. Go at opening.',
         cost: '$5',
       },
       {
         kind: 'cruise',
         title: 'Slow checkout, straight to the coast',
         time: '11:00 – 12:30',
-        body: 'Late breakfast at the villa, easy 90-minute run to Pererenan, in the pool before the sunset crowd builds.',
+        body: 'Late breakfast, 90 minutes to Pererenan, in the pool by early afternoon.',
         cost: 'Included',
       },
     ],
@@ -603,8 +568,7 @@ export const DAYS: Day[] = [
       time: '19:30',
       title: 'The last supper',
       body:
-        'Everyone, one table, Pererenan. Then whatever happens after that is between you and your flight home ' +
-        'on Tuesday afternoon.',
+        'Everyone, one table, Pererenan. What happens after is between you and Tuesday’s flight.',
     },
     tracks: [
       {
@@ -612,8 +576,7 @@ export const DAYS: Day[] = [
         title: 'Surf lesson at Batu Bolong + beach club',
         time: '07:00 – 17:00',
         body:
-          'Batu Bolong is a slow, forgiving beach break and the best place on the island to stand up for the first ' +
-          'time — two-hour lesson with a board about $25–30. Then Finns or Atlas for the afternoon.',
+          'The island’s most forgiving beach break — stand up on day one, $25–30 with a board. Beach club after.',
         cost: '$35 – 90',
       },
       {
@@ -621,8 +584,7 @@ export const DAYS: Day[] = [
         title: 'Café, market, massage',
         time: 'Whenever',
         body:
-          'Canggu’s café strip is absurd, the Love Anchor market is where the souvenirs actually get bought, and ' +
-          'a 90-minute massage is $12–18. A perfectly good way to spend a last day.',
+          'Cafés, the Love Anchor market for souvenirs, a $12–18 massage. A perfectly good last day.',
         cost: '$30 – 60',
       },
     ],
@@ -639,8 +601,7 @@ export const DAYS: Day[] = [
       time: '10:30',
       title: 'Vans to DPS',
       body:
-        'Late checkout, one last breakfast, 45 minutes to the airport for the 13:15. Five hours in Changi, then ' +
-        'the nonstop lands at LAX at 21:50 — Tuesday evening, same date on the boarding pass.',
+        'Late checkout, 45 minutes to the airport for the 13:15. Land LAX 21:50 the same Tuesday.',
     },
     tracks: [],
   },
@@ -660,42 +621,42 @@ export type BudgetLine = {
 export const BUDGET: BudgetLine[] = [
   {
     label: 'Flights',
-    detail: 'Round trip LAX–DPS · lean = EVA/China Airlines, comfort = Singapore Airlines, send = SQ Premium Economy',
+    detail: 'Round trip LAX–DPS. Lean = EVA/China Airlines · comfort = Singapore Airlines · send = SQ Premium Economy',
     lean: 1200,
     comfort: 1350,
     send: 2300,
   },
   {
     label: 'Beds',
-    detail: '8 nights ÷ 10 — private pool villa in Uluwatu, own-pool-villa-per-couple in Ubud, beachfront hotel in Canggu. June rates, tax in.',
+    detail: '8 nights ÷ 10. June listing rates, tax in.',
     lean: 145,
     comfort: 220,
     send: 390,
   },
   {
     label: 'Ground transport',
-    detail: 'One 10-seat HiAce + driver at the published operator rate (~$80/day incl. fuel), transfers, tips — all ÷ 10',
+    detail: 'One 10-seat van + driver (~$80/day incl. fuel), transfers, tips — ÷ 10',
     lean: 40,
     comfort: 70,
     send: 90,
   },
   {
     label: 'Food & drink',
-    detail: '9 days — warungs at $2–3 a plate, cafés at $5–8, and 3–4 proper group dinners at $15–20 a head',
+    detail: '9 days — warungs, cafés, and a few proper group dinners',
     lean: 135,
     comfort: 200,
     send: 280,
   },
   {
     label: 'Activities',
-    detail: 'The full menu at Klook / gate prices, never hotel-desk prices: Penida, Batur, Kecak, massages, a surf lesson',
+    detail: 'At Klook / gate prices: Penida, Batur, Kecak, massages, a surf lesson',
     lean: 120,
     comfort: 190,
     send: 250,
   },
   {
     label: 'Entry & admin',
-    detail: 'e-VOA $31 · Bali levy $9 · insurance with scooter + trek cover · eSIM bought online, not at the airport counter',
+    detail: 'e-VOA $31 · levy $9 · insurance · eSIM',
     lean: 75,
     comfort: 125,
     send: 150,
@@ -714,62 +675,20 @@ export const DEPOSIT = {
   amount: 300,
   by: 'Nov 1, 2026',
   covers: 'Your share of the flight bookings — the one thing that genuinely gets worse with time.',
-  note:
-    'Most of the rooms and villas above are free-cancellation on Agoda/Booking, so beds carry almost no ' +
-    'commitment risk. Flights are the deadline: fares are at their best Sep–Dec 2026 and only climb from there.',
+  note: 'Beds are mostly free-cancellation — flights are the deadline. Fares are best Sep–Dec 2026 and only climb.',
 };
 
 /* ─────────────────────────────  LOGISTICS  ───────────────────────────── */
 
 export const KNOW = [
-  {
-    title: 'Visa',
-    body:
-      'Visa on Arrival, IDR 500,000 (≈$35), 30 days, extendable once. Do the e-VOA online before you fly and you ' +
-      'skip a queue at Ngurah Rai. US, UK, EU, AU, CA passports all qualify.',
-  },
-  {
-    title: 'Tourist levy',
-    body:
-      'IDR 150,000 (≈$10) per person, once per visit. Pay it on the official Love Bali portal before you leave and ' +
-      'save the QR code — there is a checkpoint after baggage claim, and no QR means a 10–20 minute detour to a kiosk.',
-  },
-  {
-    title: 'Weather',
-    body:
-      'June is dry season and the best month of the year to be there. High around 30°C, low 24°C, humidity manageable, ' +
-      'rain unlikely. It is also peak season, which is why we book early.',
-  },
-  {
-    title: 'Money',
-    body:
-      'Indonesian rupiah, roughly IDR 16,000 to the dollar. Cards work in Canggu and Ubud, cash is king everywhere ' +
-      'else. Use bank ATMs (BCA, Mandiri) and decline the machine’s conversion offer every time.',
-  },
-  {
-    title: 'The 21% rule',
-    body:
-      'Mid-range and up adds 10% service plus 11% tax to the menu price. Villa quotes are usually "++" for the same ' +
-      'reason. Every number on this page already has it baked in.',
-  },
-  {
-    title: 'Getting around',
-    body:
-      'Grab and Gojek work in Canggu and Ubud but are blocked in parts of Uluwatu by local driver associations. ' +
-      'A 10-seat van with driver runs ~$80 for a full 11-hour day at published operator rates, fuel included — $8 a head, and it is how we move. Book operators directly, never through hotel desks (1.5–2× markup).',
-  },
-  {
-    title: 'Health',
-    body:
-      'No mandatory vaccinations. Bottled water only, including for teeth. Bring rehydration sachets and something ' +
-      'for a stomach. Reef-safe sunscreen — it is much more expensive to buy there than to pack.',
-  },
-  {
-    title: 'Scooters',
-    body:
-      'Cheap, fun, and the single most likely thing to ruin the trip. If you ride, you need an international ' +
-      'permit with a motorcycle endorsement, a real helmet, and travel insurance that does not void on two wheels.',
-  },
+  { title: 'Visa', body: 'Visa on Arrival, ~$31. Do the e-VOA online before flying and skip the queue. US/UK/EU/AU/CA all qualify.' },
+  { title: 'Tourist levy', body: '~$10 once, on the Love Bali portal before you fly. Keep the QR — there is a checkpoint after baggage claim.' },
+  { title: 'Weather', body: 'June is dry season and the best month of the year: ~30°C days, rain unlikely. Also peak season — hence booking early.' },
+  { title: 'Money', body: '~IDR 16,000 to the dollar. Cards work in Canggu and Ubud, cash everywhere else. Bank ATMs only; always decline the conversion offer.' },
+  { title: 'The 21% rule', body: 'Mid-range and up adds 10% service + 11% tax. Every number on this page already includes it.' },
+  { title: 'Getting around', body: 'One 10-seat van + driver, ~$80 a full day, fuel included — $8 a head. Booked direct with operators, never hotel desks.' },
+  { title: 'Health', body: 'Bottled water only. Pack rehydration sachets, something for a stomach, and reef-safe sunscreen.' },
+  { title: 'Scooters', body: 'Fun, cheap, and the likeliest thing to ruin the trip. Ride only with an international motorcycle permit, a real helmet, and insurance that covers two wheels.' },
 ];
 
 /* ─────────────────────────────  SOURCES  ───────────────────────────── */

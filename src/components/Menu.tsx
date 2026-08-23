@@ -17,14 +17,17 @@ const DOT: Record<MenuItem['intensity'], string> = {
 export function Menu() {
   const [cat, setCat] = useState<string>('all');
   const [level, setLevel] = useState<string>('all');
+  const [expanded, setExpanded] = useState(false);
 
-  const shown = useMemo(
+  const matches = useMemo(
     () =>
       MENU.filter(
         (m) => (cat === 'all' || m.category === cat) && (level === 'all' || m.intensity === level),
       ),
     [cat, level],
   );
+  // Collapsed by default so the page stays scannable; filters and the button expand it.
+  const shown = expanded || cat !== 'all' || level !== 'all' ? matches : matches.slice(0, 12);
 
   return (
     <section id="menu" className="relative scroll-mt-16 border-t border-line-soft py-24 sm:py-32">
@@ -40,8 +43,7 @@ export function Menu() {
           </div>
           <Reveal i={2}>
             <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
-              Nothing is pre-booked for the group. Prices are per person at local-booking rates —
-              Klook, GetYourGuide or the gate, never the hotel desk.
+              Nothing pre-booked. Per-person prices at Klook / gate rates — never the hotel desk.
             </p>
           </Reveal>
         </div>
@@ -139,6 +141,17 @@ export function Menu() {
             ))}
           </AnimatePresence>
         </ul>
+
+        {!expanded && cat === 'all' && level === 'all' && matches.length > 12 && (
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => setExpanded(true)}
+              className="rounded-full border border-line px-6 py-3 text-sm text-bone-dim transition-colors hover:border-bone-faint hover:text-bone"
+            >
+              Show all {MENU.length} →
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

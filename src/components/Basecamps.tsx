@@ -143,9 +143,8 @@ export function Basecamps() {
           </div>
           <Reveal i={2}>
             <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
-              Each stop lists a modest private villa and two hotel options at real Agoda/Booking June
-              rates — best value first, per-head share already worked out. Thumbnails are photos of the
-              area, not the property: the real photos live behind each listing link.
+              A modest villa and two hotels per stop, at real June listing rates, best value first.
+              Thumbnails show the area — property photos live behind each listing link.
             </p>
           </Reveal>
         </div>

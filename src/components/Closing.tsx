@@ -30,9 +30,8 @@ export function Closing() {
 
         <Reveal i={2}>
           <p className="mx-auto mt-8 max-w-xl text-pretty text-base leading-relaxed text-bone-dim">
-            The beds are mostly free-cancellation, so they carry no risk. Flights are the deadline: June
-            fares are at their best 6–9 months out and only climb. If this is happening, seats get booked
-            by <span className="text-bone">{DEPOSIT.by}</span>.
+            Beds are free-cancellation — flights are the deadline. If this is happening, seats get
+            booked by <span className="text-bone">{DEPOSIT.by}</span>.
           </p>
         </Reveal>
 
